@@ -1,0 +1,14 @@
+<html>
+<span className="ginput_product_price" id="input_6_77">$2,075.00</span>
+</html>
+
+
+<script type="javascript">
+    let appendQ = document.querySelectorAll('.ginput_product_price');
+appendQ.foreach( function() {
+    jQuery(this).after( jQuery( ".gfield_quantity" ) );
+
+});
+
+console.log(appendQ);
+</script>
