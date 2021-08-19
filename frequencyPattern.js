@@ -73,16 +73,16 @@ validAnagram = ( str1, str2 ) => {
  * @param  arr1, arr2
  * @return boolean
  */
-// const equalArrays = ( arr1, arr2 ) => {
-// // If the arrays are different length we an eliminate immediately
-//     if( arr1.length !== arr2.length ) {
-//         return false;
-//     } else if ( arr1.every(( obj, index ) => equalObjs( obj, arr2[index] ) ) ) {
-//         return true;
-//     } else {
-//         return false;
-//     }
-// }
+const equalArrays = ( arr1, arr2 ) => {
+// If the arrays are different length we an eliminate immediately
+    if( arr1.length !== arr2.length ) {
+        return false;
+    } else if ( arr1.every(( obj, index ) => equalObjs( obj, arr2[index] ) ) ) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 // console.info( equalArrays( arr1, arr2 ) );
 /**
@@ -90,23 +90,23 @@ validAnagram = ( str1, str2 ) => {
  * @param  obj1, obj2
  * @return boolean
  */
-const obj1 = { name: 'John', age: 33};
-const obj2 = { age: 33, name: 'John' };
-const obj3 = { name: 'John', age: 45 };
+// const obj1 = { name: 'John', age: 33};
+// const obj2 = { age: 33, name: 'John' };
+// const obj3 = { name: 'John', age: 45 };
 
-// const equalObjs = ( obj1, obj2 ) => {
-//     let keyExist = false;
-//     for ( const [key, value] of Object.entries(obj1) ) {
-//         // Search each key in reference object and attach a callback function to
-//         // compare the two object keys
-//         if( Object.keys(obj2).some( ( e ) => e == key ) ) {
-//             keyExist = true;
-//         }
-//     }
-//
-//     return keyExist;
-//
-// }
+const equalObjs = ( obj1, obj2 ) => {
+    let keyExist = false;
+    for ( const [key, value] of Object.entries(obj1) ) {
+        // Search each key in reference object and attach a callback function to
+        // compare the two object keys
+        if( Object.keys(obj2).some( ( e ) => e == key ) ) {
+            keyExist = true;
+        }
+    }
+
+    return keyExist;
+
+}
 
 
 // console.info( equalObjs( obj1, obj2 ) );
@@ -122,11 +122,24 @@ const obj3 = { name: 'John', age: 45 };
 function sameFrequency( num1, num2 ) {
     if ( `${num1}`.length !== `${num2}`.length ) return false;
 
+
+
     var frequencyCounter1 = [];
     var frequencyCounter2 = [];
 
-    let num1Split = num1.toString();
-    let num2Split = num2.toString();
+    var num1Split = num1.toString();
+    var num2Split = num2.toString();
+
+
+    // Sort Numbers
+
+    const sorted1 = Array.from( num1Split ).sort(( a, b ) => a.localeCompare(b) );
+    const sorted2 = Array.from( num2Split ).sort(( a, b ) => a.localeCompare(b) );
+
+
+    var num1Split = sorted1.toString().replace( /,/g, '' );
+    var num2Split = sorted2.toString().replace( /,/g, '' );
+
 
     for ( let i = 0, len = num1Split.length; i < len; i += 1 ) {
         let char1Exist = frequencyCounter1.find( theChar => Object.keys(theChar) );
@@ -135,8 +148,7 @@ function sameFrequency( num1, num2 ) {
             char1Exist++;
         } else {
            var obj = { [+num1Split.charAt( i )]: +1 };
-            // Object.assign( frequencyCounter1, { [+num1Split.charAt( i )]: +1 } );
-            // Object.assign( { frequencyCounter1: { } }, { [+num1Split.charAt( i )]: +1 } );
+
             frequencyCounter1.push( obj );
         }
     }
@@ -148,40 +160,126 @@ function sameFrequency( num1, num2 ) {
             char2Exist++;
         } else {
            var  obj = { [+num2Split.charAt( i )]: +1 };
-            // Object.assign( { frequencyCounter2: { } }, { [+num2Split.charAt( i )]: +1 } );
             frequencyCounter2.push( obj );
         }
     }
 
-    // @TODO Continue refactoring with equalobjs method, currently equalobjs returns true always, does not seem to be checking value of obj2[e], e = the full object, i.e. {3:1}, instead of the property or value
+    const equalObjs = ( obj1, obj2 ) =>
+       // if first condition is truthy, expression to be excuted, if falsey execute objq === obj2;
+       typeof obj1 === 'object' && Object.keys( obj1 ).length > 0 ? Object.keys( obj1 ).length === Object.keys( obj2 ).length && Object.keys( obj1 ).every( p => equalObjs( obj1[p], obj2[p] ) ) : obj1 === obj2;
+
+
+    const equalArrays = ( arr1, arr2) =>
+       arr1.length === arr2.length && arr1.every( ( obj, index ) => equalObjs( obj, arr2[index] ) );
+
+
+
+    return equalArrays( frequencyCounter1, frequencyCounter2 );
+}
+// console.info( sameFrequency( 14,34 ) )
+// console.info( sameFrequency( 182,281 ) )
+// console.info( sameFrequency( 22,222 ) )
+// console.info( sameFrequency( 3589578, 5879385 ) )
+// @TODO Continue reviewing, revise answer at https://stackoverflow.com/questions/27030/comparing-arrays-of-objects-in-javascript/67489928#67489928
+
+function sameFrequencyAlt( num1, num2 ) {
+    if ( `${num1}`.length !== `${num2}`.length ) return false;
+
+
+    var frequencyCounter1 = [];
+    var frequencyCounter2 = [];
+
+    var num1Split = num1.toString();
+    var num2Split = num2.toString();
+    //
+    //
+    // // Sort Numbers
+    // const sorted1 = Array.from( num1Split ).sort(( a, b ) => a.localeCompare(b) );
+    // const sorted2 = Array.from( num2Split ).sort(( a, b ) => a.localeCompare(b) );
+
+    //
+    // var num1Split = sorted1.toString().replace( /,/g, '' );
+    // var num2Split = sorted2.toString().replace( /,/g, '' );
+    
+
+
+    for ( let i = 0, len = num1Split.length; i < len; i += 1 ) {
+        let char1Exist = frequencyCounter1.find( theChar => Object.keys(theChar) );
+
+        if ( char1Exist !== undefined && Object.keys(char1Exist) === num1Split.charAt(i) ) {
+            char1Exist++;
+        } else {
+            var obj = { [+num1Split.charAt( i )]: +1 };
+
+            frequencyCounter1.push( obj );
+        }
+    }
+
+    for ( let i = 0, len = num2Split.length; i < len; i += 1 ) {
+        let char2Exist = frequencyCounter2.find( theChar => Object.keys(theChar) );
+
+        if ( char2Exist !== undefined && Object.keys(char2Exist) === num2Split.charAt(i) ) {
+            char2Exist++;
+        } else {
+            var  obj = { [+num2Split.charAt( i )]: +1 };
+            frequencyCounter2.push( obj );
+        }
+    }
+
     const equalObjs = ( obj1, obj2 ) => {
         let keyExist = false;
-        // for ( let value of Object.values(obj1) ) {
-        //     // Search each key in reference object and attach a callback function to compare the two object keys
-        //     if( Object.values(obj2).indexOf(obj1) == value ) {
-        //         keyExist = true;
-        //     }
-     if( Object.values( obj1 ).every( e => obj1[e] === obj2[e] ) ) {
-         keyExist = true;
-
-     }
+        for ( const [key, value] of Object.entries(obj1) ) {
+            // Search each key in reference object and attach a callback function to
+            // compare the two object keys
+            if( Object.keys(obj2).some( ( e ) => e == key ) ) {
+                keyExist = true;
+            }
+        }
 
         return keyExist;
 
     }
-    // }
+    const equalArrays = ( arr1, arr2 ) => {
 
-    // const equalArrays = ( arr1, arr2) => {
-    //     if( arr1.length !== arr2.length ) {
-    //         return false;
-    //     } else if ( arr1.every( ( obj, index ) => equalObjs( obj, arr2[index] ) ) ) {
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // }
-    return equalObjs( frequencyCounter1, frequencyCounter2 );
+// If the arrays are different length we an eliminate immediately
+        if( arr1.length !== arr2.length ) {
+            return false;
+        } else if ( arr1.every(( obj, index ) => equalObjs( obj, arr2[index] ) ) ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    var frequencyCounter1 = frequencyCounter1.sort(( a, b ) => {
+        var fa = Object.keys(a);
+        var fb = Object.keys(b);
+
+        if (fa < fb) {
+            return -1;
+        }
+        if (fa > fb) {
+            return 1;
+        }
+        return 0;
+    });
+
+    var frequencyCounter2 = frequencyCounter2.sort(( a, b ) => {
+        var fa = Object.keys(a);
+        var fb = Object.keys(b);
+
+        if (fa < fb) {
+            return -1;
+        }
+        if (fa > fb) {
+            return 1;
+        }
+        return 0;
+    });
+    
+    return equalArrays( frequencyCounter1, frequencyCounter2 );
 }
-console.info( sameFrequency( 182,281 ) )
-// console.info( sameFrequency( 3589578, 5879385 ) )
-// @TODO Continue debugging, look back into using the equal array function referencing https://stackoverflow.com/questions/27030/comparing-arrays-of-objects-in-javascript/67489928#67489928
+console.info( sameFrequencyAlt( 14,34 ) )
+console.info( sameFrequencyAlt( 182,281 ) )
+console.info( sameFrequencyAlt( 22,222 ) )
+console.info( sameFrequencyAlt( 3589578, 5879385 ) )
