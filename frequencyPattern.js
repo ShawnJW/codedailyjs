@@ -122,8 +122,6 @@ const equalObjs = ( obj1, obj2 ) => {
 function sameFrequency( num1, num2 ) {
     if ( `${num1}`.length !== `${num2}`.length ) return false;
 
-
-
     var frequencyCounter1 = [];
     var frequencyCounter2 = [];
 
@@ -131,12 +129,11 @@ function sameFrequency( num1, num2 ) {
     var num2Split = num2.toString();
 
 
-    // Sort Numbers
-
+    // Convert to Array and Sort Numbers
     const sorted1 = Array.from( num1Split ).sort(( a, b ) => a.localeCompare(b) );
     const sorted2 = Array.from( num2Split ).sort(( a, b ) => a.localeCompare(b) );
 
-
+    // Convert back to string and remove commas
     var num1Split = sorted1.toString().replace( /,/g, '' );
     var num2Split = sorted2.toString().replace( /,/g, '' );
 
@@ -180,7 +177,14 @@ function sameFrequency( num1, num2 ) {
 // console.info( sameFrequency( 182,281 ) )
 // console.info( sameFrequency( 22,222 ) )
 // console.info( sameFrequency( 3589578, 5879385 ) )
-// @TODO Continue reviewing, revise answer at https://stackoverflow.com/questions/27030/comparing-arrays-of-objects-in-javascript/67489928#67489928
+
+
+/** https://stackoverflow.com/questions/27030/comparing-arrays-of-objects-in-javascript/67489928#67489928
+ *
+ * @param num1
+ * @param num2
+ * @returns {boolean}
+ */
 
 function sameFrequencyAlt( num1, num2 ) {
     if ( `${num1}`.length !== `${num2}`.length ) return false;
@@ -279,7 +283,7 @@ function sameFrequencyAlt( num1, num2 ) {
     
     return equalArrays( frequencyCounter1, frequencyCounter2 );
 }
-console.info( sameFrequencyAlt( 14,34 ) )
-console.info( sameFrequencyAlt( 182,281 ) )
-console.info( sameFrequencyAlt( 22,222 ) )
-console.info( sameFrequencyAlt( 3589578, 5879385 ) )
+// console.info( sameFrequencyAlt( 14,34 ) )
+// console.info( sameFrequencyAlt( 182,281 ) )
+// console.info( sameFrequencyAlt( 22,222 ) )
+// console.info( sameFrequencyAlt( 3589578, 5879385 ) )
