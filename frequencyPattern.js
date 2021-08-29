@@ -165,7 +165,7 @@ function sameFrequency( num1, num2 ) {
        // if first condition is truthy, expression to be excuted, if falsey execute objq === obj2;
        typeof obj1 === 'object' && Object.keys( obj1 ).length > 0 ? Object.keys( obj1 ).length === Object.keys( obj2 ).length && Object.keys( obj1 ).every( p => equalObjs( obj1[p], obj2[p] ) ) : obj1 === obj2;
 
-
+    // function runs on each sorted object
     const equalArrays = ( arr1, arr2) =>
        arr1.length === arr2.length && arr1.every( ( obj, index ) => equalObjs( obj, arr2[index] ) );
 
@@ -287,3 +287,45 @@ function sameFrequencyAlt( num1, num2 ) {
 // console.info( sameFrequencyAlt( 182,281 ) )
 // console.info( sameFrequencyAlt( 22,222 ) )
 // console.info( sameFrequencyAlt( 3589578, 5879385 ) )
+
+
+//Problem Solving
+// Find duplicated arguments in arguments passed to function.
+// Inputs, variable arguments
+// Output boolean
+// I have enought info to solve
+
+
+/**
+ * Check whether there are any duplicates in the arguments ( variable number of arguments )
+ *
+ * Frequency Method
+ *
+ * @param arg1
+ * @param arg2
+ * @returns {boolean}
+ */                                                                                   
+
+function areThereDuplicates(  ...theArgs ) {
+    if ( theArgs.length < 0 ) return false;
+
+    // theArgs.forEach( e = e => console.info(e) ) ;
+    var count = [];
+    var isDupe = 0;
+
+    let dupeArgs = (  ) => {
+        theArgs.forEach(e = e => {
+            if (count.length > 0 && count.includes(e)) {
+                var isDupe = 1;
+            } else {
+                count.push(e);
+            }
+            return isDupe;
+        });
+    }
+}
+// console.info( areThereDuplicates( 1, 2, 3 ) )
+console.info( areThereDuplicates( 1, 2, 2 ) )
+console.info( areThereDuplicates( "a", "b", "c", "a" ) )
+// @TODO Continue try just counting 0bject key values or using sameFrequency function.
+// I think to do this I would need to do a pointer that first ran the sameFrequency function over the first 2 input values, then moves to the next looking for a match
