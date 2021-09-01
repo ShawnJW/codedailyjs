@@ -10,12 +10,16 @@ countUniqueValues = ( array ) => {
     var i = 0;
 
     for( var j = 1; j < array.length; j++ ) {
-        if( arr[i] !== arr[j] ) {
+        if( array[i] !== array[j] ) {
             i++;
+            
             array[i] = array[j]
         }
     }
 
+    return i;
+
 }
 
 console.info( countUniqueValues( [1, 1, 1, 1, 1, 2] ) );
+console.info( countUniqueValues( [1, 1, 1, 1, 1, 2, 3, 5] ) );
