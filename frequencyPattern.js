@@ -311,18 +311,23 @@ function areThereDuplicates(  ...theArgs ) {
 
     // theArgs.forEach( e = e => console.info(e) ) ;
     var count = [];
-    var isDupe = 0;
+    var isDupe = false;
 
     let dupeArgs = (  ) => {
-        theArgs.forEach(e = e => {
-            if (count.length > 0 && count.includes(e)) {
-                var isDupe = 1;
-            } else {
-                count.push(e);
+        theArgs.forEach( function( e, i ) {
+            for ( var j = 0; j < theArgs.length; j++ ) {
+                if (e[i] !== e[j]) {
+                let isDupe = true;
+                e[i] = e[j];
+                } else {
+                    count.push(e);
+                }
             }
-            return isDupe;
         });
+
     }
+    return isDupe;
+
 }
 // console.info( areThereDuplicates( 1, 2, 3 ) )
 console.info( areThereDuplicates( 1, 2, 2 ) )
