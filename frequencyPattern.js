@@ -113,7 +113,8 @@ const equalObjs = ( obj1, obj2 ) => {
 
 /**
  * Find out if the two numbers have the same frequency of digits
- * Big0 = O(n)
+ * BigO = Describing the relationship of the input of a function and how it changes the runtime
+ * BigO = O(n)  because of the search in the for loop, the time will not increase as the input grows
  * @param  num1, num2
  * @return boolean
  * Steps: 1. Handle Errors, 2. Define structure to store the count of digits in numbers, 3. Split numbers into array 4. 2 individual Loops to count digits from the 2 numbers, using an array of newly created count object 5. Loop to compare keys and counts and return boolean, 6. Final return
@@ -195,15 +196,6 @@ function sameFrequencyAlt( num1, num2 ) {
 
     var num1Split = num1.toString();
     var num2Split = num2.toString();
-    //
-    //
-    // // Sort Numbers
-    // const sorted1 = Array.from( num1Split ).sort(( a, b ) => a.localeCompare(b) );
-    // const sorted2 = Array.from( num2Split ).sort(( a, b ) => a.localeCompare(b) );
-
-    //
-    // var num1Split = sorted1.toString().replace( /,/g, '' );
-    // var num2Split = sorted2.toString().replace( /,/g, '' );
     
 
 
@@ -289,3 +281,31 @@ function sameFrequencyAlt( num1, num2 ) {
 // console.info( sameFrequencyAlt( 3589578, 5879385 ) )
 
 
+//Course Solution
+// @TODO copy by hand in notebook.
+
+function sameFrequency(num1, num2){
+    let strNum1 = num1.toString();
+    let strNum2 = num2.toString();
+    if(strNum1.length !== strNum2.length) return false;
+
+    let countNum1 = {};
+    let countNum2 = {};
+
+
+    for(let i = 0; i < strNum1.length; i++){
+        // Creates object with keys and values, i.e. {1:1},{4:1}
+        countNum1[strNum1[i]] = (countNum1[strNum1[i]] || 0) + 1
+    }
+
+    for(let j = 0; j < strNum1.length; j++){
+        countNum2[strNum2[j]] = (countNum2[strNum2[j]] || 0) + 1
+    }
+
+    for(let key in countNum1){
+        // Compare keys
+        if(countNum1[key] !== countNum2[key]) return false;
+    }
+
+    return true;
+}
