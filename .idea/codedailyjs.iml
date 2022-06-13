@@ -4,5 +4,10 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="@types/es6-collections" level="application" />
+    <orderEntry type="library" name="@types/es6-set-proptypes" level="application" />
+    <orderEntry type="library" name="@types/array-find-index" level="application" />
+    <orderEntry type="library" name="@types/node" level="application" />
+    <orderEntry type="library" name="@types/node-array-ext" level="application" />
   </component>
 </module>
