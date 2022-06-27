@@ -167,4 +167,12 @@ button {
         order: 1;
     }
 
+    .hero-mobile span {
+        float: right;
+        width: 285px;
+        background-image: url("Pattern.jpeg");
+        height: 354px;
+        clip-path: polygon(84% 0, 100% 0, 100% 100%, 40% 100%);
+    }
+
 }
