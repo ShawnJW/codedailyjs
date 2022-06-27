@@ -24,7 +24,7 @@
 .hero span:nth-child(3n) {
     float: right;
     background: #fff;
-    width: 303px;
+    width: 304px;
     height: 550px;
     clip-path: polygon(0 0, 0% 100%, 55% 100%);
     border: 1px solid #fff;
@@ -107,7 +107,7 @@ button {
         background-size: cover;
         height: 354px;
         display: block;
-        margin-top: -65px;
+        margin-top: -110px;
     }
 
     section.hero {
