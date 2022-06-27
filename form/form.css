@@ -1,0 +1,170 @@
+.main {
+    max-width: 1440px;
+}
+
+.hero {
+    background-image: url("form-bg.jpeg");
+    background-position: right;
+    background-repeat: no-repeat;
+    height: 550px;
+}
+
+.hero img {
+    margin: 55px 0 0 80px;
+}
+
+.hero p {
+    line-height: 45px;
+    max-width: 423px;
+    margin: 201px 0 -100px 80px;
+    font: 40px Helvetica bold;
+    font-weight: 700;
+}
+
+.hero span:nth-child(3n) {
+    float: right;
+    background: #fff;
+    width: 303px;
+    height: 550px;
+    clip-path: polygon(0 0, 0% 100%, 55% 100%);
+    border: 1px solid #fff;
+}
+
+.hero span:nth-child(2) {
+    float: right;
+    width: 400px;
+    background-image: url("Pattern.jpeg");
+    height: 550px;
+    clip-path: polygon(84% 0, 100% 0, 100% 100%, 40% 100%);
+}
+
+section.form-container {
+    margin-top: 70px;
+}
+
+form.form {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: end;
+    justify-content: center;
+}
+
+label {
+    display: flex;
+    padding-bottom: 15px;
+}
+
+
+input, select, button {
+    border: 1px solid #C2C9D1;
+    border-radius: 12px;
+    margin-right: 34px;
+    width: 235px;
+    height: 40px;
+}
+
+input{
+    height: 35px;
+}
+
+select {
+    padding-left: 3px;
+}
+
+button {
+    margin-right: 0;
+    max-width: 191px;
+    background-color: #006FFF;
+    color: #fff;
+    padding: 13px 46px 13px 46px;
+}
+
+.thank-you, .hero-mobile {
+    display: none;
+}
+
+@media screen and (max-width: 800px) {
+    .form input {
+        margin: 10px 0;
+    }
+
+    form.form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    p {
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    .hero-mobile {
+        background-image: url("form-bg.jpeg");
+        background-position: top right;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 354px;
+        display: block;
+        margin-top: -65px;
+    }
+
+    section.hero {
+        background-image: none;
+    }
+
+    .hero img {
+        margin: 55px 0 0 13px;
+    }
+
+    section.hero span:first-child {
+        height: 20px;
+    }
+
+    section.hero p {
+        max-width: none;
+        margin-top: 110px;
+        margin-left: -105px;
+        margin-right: 0;
+        text-align: left;
+        justify-content: center;
+    }
+
+    .hero span:nth-child(2n), .hero span:nth-child(3n) {
+        display: none;
+    }
+
+    label {
+        margin: 5px 25px;
+        padding-bottom: 0;
+    }
+
+    .form input, .form select {
+        margin: 5px 25px;
+    }
+
+    button {
+        margin: 10px 27px;
+        max-width: 235px;
+    }
+
+    form.form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    p {
+        font-size: 30px;
+    }
+
+    section.hero {
+        display: flex;
+        /*flex-direction: column-reverse;*/
+    }
+
+    section.hero.span {
+        order: 1;
+    }
+
+}

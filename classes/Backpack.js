@@ -15,7 +15,8 @@ class Backpack {
         pocketNum,
         strapLengthL,
         strapLengthR,
-        lidOpen
+        lidOpen,
+        dateAcquired
     ) {
         // Define properties
         this.name = name;
@@ -27,6 +28,7 @@ class Backpack {
             right: strapLengthR
         };
         this.lidOpen = lidOpen;
+        this.dateAcquired = dateAcquired;
     }
     // Add methods
     toggleLid(lidStatus) {
@@ -35,6 +37,13 @@ class Backpack {
     newStrapLenght(strapLenghtL, strapLengthR) {
         this.strapLength.left = strapLenghtL;
         this.strapLength.right = strapLengthR;
+    }
+    backpackAge() {
+        let now = new Date();
+        let acquired = new Date(this.dateAcquired);
+        let elapsed = now - acquired;
+        let daysSinceAcquired = Math.floor(elapsed / (1000 * 3600 * 24) );
+        return daysSinceAcquired;
     }
 }
 
