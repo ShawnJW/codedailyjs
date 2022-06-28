@@ -141,17 +141,64 @@ section#thank-you p {
     font: normal 400 14px/20px Nobile, sans-serif;
 
 }
+@media (min-width: 801px) and (max-width: 1026px) {
 
-/*@media screen and (max-width: 800px) {*/
-/*    .form input {*/
-/*        margin: 10px 0;*/
-/*    }*/
+    .hero {
+        background-size: contain;
+        height: 413px;
+    }
 
-/*    form.form {*/
-/*        flex-direction: column;*/
-/*        align-items: stretch;*/
-/*    }*/
-/*}*/
+    .hero h1 {
+        font: normal 700 30px/35px Neue Montreal, sans-serif !important;
+        margin: 80px 0 0 80px;
+    }
+
+    .hero span:nth-child(2) {
+        height: 413px;
+    }
+
+    .hero span:nth-child(3n) {
+        width: 102px;
+        height: 413px;
+    }
+
+    input, select, button {
+        width: 130px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 800px) {
+
+    form.form {
+        flex-direction: row;
+        align-items: end;
+    }
+
+    input, select, button {
+        width: 130px !important;
+    }
+
+    .hero {
+        background-size: contain;
+        height: 413px;
+    }
+
+    .hero span:nth-child(2) {
+        height: 413px;
+    }
+
+    .hero span:nth-child(3n) {
+        width: 100px;
+        height: 413px;
+    }
+
+    .hero h1 {
+        font: normal 700 30px/35px Neue Montreal, sans-serif !important;
+        margin: 80px 0 0 80px;
+    }
+
+
+}
 
 @media screen and (max-width: 768px) {
 
@@ -225,7 +272,7 @@ section#thank-you p {
     }
 
     label {
-        margin: 5px 0;
+        margin: 5px 0 -2px 0;
         padding-bottom: 0;
     }
 
